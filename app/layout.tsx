@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <nav>
-          <Link href="/">Home</Link>
+          <Link href="/">Overview</Link>
           <Link href="/matches"> Matches</Link>
           <Link href="/ranked"> Ranks</Link>
         </nav>
