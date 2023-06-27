@@ -1,8 +1,7 @@
 export default function Matchespage() {
   return (
     <main>
-      <div>Service will be available soon</div>
-      <span>Maintanance work</span>
+      <h1>Matches</h1>
     </main>
   );
 }

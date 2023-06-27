@@ -1,11 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
-      <div>Service will be available soon</div>
-      <span>Maintanance work</span>
+      <h1>Overview</h1>
     </main>
   );
 }
