@@ -1,7 +1,8 @@
 export default function Home() {
   return (
     <main>
-      <div>Hello World</div>
+      <div>Service will be available soon</div>
+      <span>Maintanance work</span>
     </main>
   );
 }
