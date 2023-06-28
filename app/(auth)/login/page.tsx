@@ -16,7 +16,7 @@ export default async function LoginPage({ searchParams }: Props) {
     (await getValidSessionByToken(sessionTokenCookie.value));
 
   // 3. Either redirect or render the login form
-  if (session) redirect('/');
+  if (session) redirect('/login');
 
   console.log('My search params', searchParams);
   return <LoginForm returnTo={searchParams.returnTo} />;
