@@ -1,11 +1,17 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import Link from 'next/link';
 import Footer from './common/footer';
 import styles from './layout.module.scss';
-import SearchInput from './SearchInput';
+import SearchInput from './search/SearchInput';
 
-const inter = Inter({ subsets: ['latin'] });
+const myFont = localFont({
+  src: [
+    {
+      path: './../../../Downloads/Spiegel-Regular.otf',
+    },
+  ],
+});
 
 export const metadata = {
   title: 'League App',
@@ -19,11 +25,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={myFont.className}>
         <nav>
-          <Link href="/">Overview</Link>
-          <Link href="/matches"> Matches</Link>
-          <Link href="/ranked"> Ranks</Link>
+          <ul>
+            <li>
+              <Link href="/">Overview</Link>
+            </li>
+            <li>
+              <Link href="/matches"> Matches</Link>
+            </li>
+            <li>
+              <Link href="/ranked"> Ranks</Link>
+            </li>
+            <li>
+              <Link href="/register"> Register User</Link>
+            </li>
+            <li>
+              <Link href="/login">Login</Link>
+            </li>
+          </ul>
         </nav>
         <div className="flex flex-lol gap.10 items-center p-6">
           <div className={styles.searchinput}>
