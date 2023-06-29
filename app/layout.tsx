@@ -7,8 +7,6 @@ import Footer from './common/footer';
 import { LogoutButton } from './components/LogoutButton';
 import Navbar from './components/Navigation';
 import styles from './layout.module.scss';
-import HomePage from './page';
-import SearchInput from './search2/SearchInput';
 
 const myFont = localFont({
   src: [
@@ -61,15 +59,9 @@ export default async function RootLayout({ children }: Props) {
             )}
           </div>
           <Navbar />
-          <div className="flex flex-lol gap.10 items-center p-6">
-            <div className={styles.searchinput}>
-              <SearchInput />
-            </div>
-            {children}
-
-            <Footer />
-          </div>
         </div>
+        {children}
+        <Footer />
       </body>
     </html>
   );
