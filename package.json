@@ -25,6 +25,7 @@
     "server-only": "^0.0.1",
     "sharp": "^0.32.1",
     "tsm": "^2.3.0",
+    "twisted": "^1.53.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {

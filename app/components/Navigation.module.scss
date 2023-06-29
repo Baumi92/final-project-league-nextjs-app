@@ -1,0 +1,30 @@
+.name {
+  color: #c89b3c;
+}
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #c89b3c;
+  position: static;
+  border-radius: 5px;
+
+  li a {
+    display: block;
+    color: #0a1428;
+    background-color: #c89b3c;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #cdfafa;
+    color: #785a28;
+  }
+}
+
+.buttons {
+  text-align: right;
+}

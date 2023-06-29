@@ -1,3 +1,19 @@
 .searchinput {
+  justify-content: center;
   text-align: center;
+}
+
+.name {
+  color: #c89b3c;
+}
+
+.buttons {
+  float: right;
+  background-color: #c89b3c;
+  color: #cdfafa;
+
+  :hover {
+    background-color: #cdfafa;
+    color: #785a28;
+  }
 }

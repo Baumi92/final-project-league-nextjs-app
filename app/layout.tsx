@@ -1,12 +1,12 @@
 import './globals.css';
 import localFont from 'next/font/local';
 import { cookies } from 'next/headers';
-import Link from 'next/link';
 import { ReactNode } from 'react';
 import { getUserBySessionToken } from '../database/users';
 import Footer from './common/footer';
+import { LogoutButton } from './components/LogoutButton';
+import Navbar from './components/Navigation';
 import styles from './layout.module.scss';
-import { LogoutButton } from './LogoutButton';
 import SearchInput from './search/SearchInput';
 
 const myFont = localFont({
@@ -37,38 +37,37 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={myFont.className}>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">Overview</Link>
-            </li>
-            <li>
-              <Link href="/matches"> Matches</Link>
-            </li>
-            <li>
-              <Link href="/ranked"> Ranks</Link>
-            </li>
-          </ul>
-          <div>
+        <div>
+          <div className={styles.buttons}>
             {user ? (
               <>
-                <div>{user.username}</div>
+                <div className={styles.name}>{user.username}</div>
                 <LogoutButton />
               </>
             ) : (
               <>
-                <Link href="/register">register</Link>
-                <Link href="/login">login</Link>
+                <button className={styles.buttons}>
+                  <a className={styles.buttons} href="/register">
+                    register
+                  </a>
+                </button>
+                <button className={styles.buttons}>
+                  <a className={styles.buttons} href="/login">
+                    login
+                  </a>
+                </button>
               </>
             )}
           </div>
-        </nav>
-        <div className="flex flex-lol gap.10 items-center p-6">
-          <div className={styles.searchinput}>
-            <SearchInput />
+          <Navbar />
+          <div className="flex flex-lol gap.10 items-center p-6">
+            <div className={styles.searchinput}>
+              <SearchInput />
+            </div>
+            {children}
+
+            <Footer />
           </div>
-          {children}
-          <Footer />
         </div>
       </body>
     </html>
