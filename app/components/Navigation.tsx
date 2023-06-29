@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
 import React from 'react';
 import { getUserBySessionToken } from '../../database/users';
-import { LogoutButton } from './LogoutButton';
 import styles from './Navigation.module.scss';
 
 export const Navbar = async () => {
@@ -11,7 +10,7 @@ export const Navbar = async () => {
   const user = !sessionToken?.value
     ? undefined
     : await getUserBySessionToken(sessionToken.value);
-
+  console.log(user);
   return (
     <div>
       <ul className={styles.ul}>
@@ -23,6 +22,9 @@ export const Navbar = async () => {
         </li>
         <li>
           <a href="/ranked"> Ranks</a>
+        </li>
+        <li>
+          <a href="/search"> Search Summoner</a>
         </li>
       </ul>
     </div>

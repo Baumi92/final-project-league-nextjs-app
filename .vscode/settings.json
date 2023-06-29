@@ -9,5 +9,11 @@
     "javascript",
     "typescriptreact"
   ],
-  "cSpell.words": ["Matchespage", "searchinput"]
+  "cSpell.words": [
+    "Matchespage",
+    "RGAPI",
+    "riotgames",
+    "searchinput",
+    "Summonername"
+  ]
 }

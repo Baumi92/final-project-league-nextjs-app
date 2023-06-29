@@ -7,7 +7,8 @@ import Footer from './common/footer';
 import { LogoutButton } from './components/LogoutButton';
 import Navbar from './components/Navigation';
 import styles from './layout.module.scss';
-import SearchInput from './search/SearchInput';
+import HomePage from './page';
+import SearchInput from './search2/SearchInput';
 
 const myFont = localFont({
   src: [

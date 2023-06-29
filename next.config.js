@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
     typedRoutes: true,
@@ -9,6 +8,14 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://europe.api.riotgames.com/:path*',
+      },
+    ];
   },
 };
 
