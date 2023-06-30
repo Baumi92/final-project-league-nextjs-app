@@ -10,7 +10,10 @@
     "typescriptreact"
   ],
   "cSpell.words": [
+    "gametype",
     "Matchespage",
+    "puuid",
+    "Ratelimits",
     "RGAPI",
     "riotgames",
     "searchinput",

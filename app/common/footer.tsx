@@ -6,12 +6,12 @@ export default function Footer() {
       <h2>Footer Section</h2>
       <div>
         <ul>
-          <li>Something</li>
-          <li>Something</li>
-          <li>Something</li>
-          <li>Something</li>
-          <li>Something</li>
-          <li>Something</li>
+          <li>available soon</li>
+          <li>available soon</li>
+          <li>available soon</li>
+          <li>available soon</li>
+          <li>available soon</li>
+          <li>available soon</li>
         </ul>
       </div>
     </footer>

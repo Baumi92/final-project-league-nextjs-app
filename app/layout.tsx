@@ -60,6 +60,7 @@ export default async function RootLayout({ children }: Props) {
           </div>
           <Navbar />
         </div>
+
         {children}
         <Footer />
       </body>
