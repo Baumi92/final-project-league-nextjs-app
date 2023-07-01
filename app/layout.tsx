@@ -15,6 +15,7 @@ const myFont = localFont({
     },
   ],
 });
+myFont.className = ''; // Set className to an empty string to remove the extra attributes
 
 export const metadata = {
   title: 'League App',
@@ -45,16 +46,13 @@ export default async function RootLayout({ children }: Props) {
               </>
             ) : (
               <>
-                <button className={styles.buttons}>
-                  <a className={styles.buttons} href="/register">
-                    register
-                  </a>
-                </button>
-                <button className={styles.buttons}>
-                  <a className={styles.buttons} href="/login">
-                    login
-                  </a>
-                </button>
+                <a className={styles.buttons} href="/register">
+                  Register
+                </a>
+
+                <a className={styles.buttons} href="/login">
+                  Login
+                </a>
               </>
             )}
           </div>

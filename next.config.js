@@ -19,4 +19,11 @@ const nextConfig = {
   },
 };
 
+module.exports = {
+  webpack: (config) => {
+    config.plugins.push(new webpack.EnvironmentPlugin(config.env));
+    return config;
+  },
+};
+
 module.exports = nextConfig;

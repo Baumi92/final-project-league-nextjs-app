@@ -23,7 +23,10 @@ function App() {
       const puuid =
         '2Ujtmy1ktR2psVkUMsLj1V0n3JfjtEJu77CYUZFxqQdaGEhKUVOkP-uSPPRRopMMF542Lar0nhXnrQ'; // Replace with the actual puuid
 
-      const apiUrl = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10`;
+      const apiUrl =
+        `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10` +
+        '?api_key' +
+        API_KEY;
       try {
         const response = await axios.get<string[]>(apiUrl, {
           headers: {

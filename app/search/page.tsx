@@ -10,16 +10,6 @@ interface PlayerData {
   summonerLevel: number;
 }
 
-export async function getServersideProps() {
-  const response = await axios({
-    method: process.env.API_URL,
-    headers: {
-      Authorization: process.env.API_KEY,
-    },
-  });
-  console.log(response);
-}
-
 function App() {
   const [searchText, setSearchText] = useState('');
   const [playerData, setPlayerData] = useState<PlayerData | null>(null);
@@ -27,13 +17,13 @@ function App() {
   const API_KEY = 'RGAPI-ad140755-0a25-444b-a3cd-adc911de5419';
 
   function searchForPlayer(event: React.MouseEvent<HTMLButtonElement>) {
-    const APICallString =
+    const APICALLSTRING =
       'https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' +
       searchText +
       '?api_key=' +
       API_KEY;
     axios
-      .get<PlayerData>(APICallString)
+      .get<PlayerData>(APICALLSTRING)
       .then(function (response) {
         console.log(response.data);
         setPlayerData(response.data);

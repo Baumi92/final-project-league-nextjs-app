@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { getSafeReturnToPath } from '../../../util/validation';
 import { LoginResponseBodyPost } from '../../api/(auth)/login/route';
+import SignUpCard from '../../components/Card';
 import styles from './LoginForm.module.scss';
 
 type Props = { returnTo?: string | string[] };
@@ -38,17 +39,19 @@ export default function LoginForm(props: Props) {
   }
 
   return (
-    <form onSubmit={(event) => event.preventDefault()}>
-      <label>
-        username:
+    <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
+      <label className={styles.label}>
+        Username:
         <input
+          className={styles.input}
           value={username}
           onChange={(event) => setUsername(event.currentTarget.value)}
         />
       </label>
-      <label>
-        password:
+      <label className={styles.label}>
+        Password:
         <input
+          className={styles.input}
           value={password}
           type="password"
           onChange={(event) => setPassword(event.currentTarget.value)}
