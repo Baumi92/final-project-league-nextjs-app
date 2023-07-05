@@ -1,74 +1,47 @@
 'use client';
+import { useState } from 'react';
 
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-
-interface MatchData {
-  // Define the structure of the match data as per your API response
-  // Include the necessary properties required for rendering the matches
-  id: string;
-  puuid: string;
-  apiUrl: string;
-  apiKey: string;
-  // ... other properties
+interface PlayerData {
+  name: string;
+  profileIconId: number;
+  summonerLevel: number;
 }
 
-function App() {
-  const [matches, setMatches] = useState<MatchData[]>([]);
+const SummonerSearch = () => {
+  const [searchText, setSearchText] = useState('');
+  const [playerData, setPlayerData] = useState<PlayerData | null>(null);
 
-  const API_KEY = 'RGAPI-ad140755-0a25-444b-a3cd-adc911de5419';
-
-  useEffect(() => {
-    async function fetchMatchHistory() {
-      const puuid =
-        '2Ujtmy1ktR2psVkUMsLj1V0n3JfjtEJu77CYUZFxqQdaGEhKUVOkP-uSPPRRopMMF542Lar0nhXnrQ'; // Replace with the actual puuid
-
-      const apiUrl =
-        `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10` +
-        '?api_key' +
-        API_KEY;
-      try {
-        const response = await axios.get<string[]>(apiUrl, {
-          headers: {
-            Authorization: `Bearer ${API_KEY}`,
-          },
-        });
-        console.log(response.data);
-        // Process the match data as per your API response
-        // Set the matches state variable with the processed data
-        const processedMatches: MatchData[] = response.data.map(
-          (id: string) => ({
-            id,
-            // ... other properties
-          }),
-        );
-        setMatches(processedMatches);
-      } catch (error) {
-        console.error(error);
-      }
+  const searchForPlayer = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/summoner?name=${searchText}`,
+      );
+      const data = await response.json();
+      setPlayerData(data);
+    } catch (error) {
+      console.error('Error fetching player data:', error);
     }
-
-    fetchMatchHistory();
-  }, []);
+  };
 
   return (
     <div>
-      <h1>Match History</h1>
-      {matches.length > 0 ? (
+      <h1>League of Legends Player Searcher</h1>
+      <input type="text" onChange={(e) => setSearchText(e.target.value)} />
+      <button onClick={searchForPlayer}>Search for player</button>
+      {playerData ? (
         <div>
-          <h2>Last 10 Matches:</h2>
-          {matches.map((match: MatchData) => (
-            <div key={match.id}>
-              <p>Match ID: {match.id}</p>
-              {/* Render other match information */}
-            </div>
-          ))}
+          <p>Summoner Name: {playerData.name}</p>
+          <img
+            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/2076.png`}
+            alt="Profile Icon"
+          />
+          <p>Summoner Level: {playerData.summonerLevel}</p>
         </div>
       ) : (
-        <p>No match history found</p>
+        <p>No player data</p>
       )}
     </div>
   );
-}
+};
 
-export default App;
+export default SummonerSearch;
