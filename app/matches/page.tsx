@@ -1,48 +1,25 @@
-'use client';
-import { useState } from 'react';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { getValidSessionByToken } from '../../database/sessions';
+import SearchforPlayer from './MatchHistory';
 
-interface PlayerData {
-  name: string;
-  profileIconId: number;
-  summonerLevel: number;
-}
+export default async function () {
+  // 1. Check if the sessionToken cookie exit
+  const sessionTokenCookie = cookies().get('sessionToken');
 
-const SummonerSearch = () => {
-  const [searchText, setSearchText] = useState('');
-  const [playerData, setPlayerData] = useState<PlayerData | null>(null);
+  // 2. check if the sessionToken has a valid session
 
-  const searchForPlayer = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:3000/api/summoner?name=${searchText}`,
-      );
-      const data = await response.json();
-      setPlayerData(data);
-    } catch (error) {
-      console.error('Error fetching player data:', error);
-    }
-  };
+  const session =
+    sessionTokenCookie &&
+    (await getValidSessionByToken(sessionTokenCookie.value));
+
+  // 3. Either redirect or render the login form
+  if (!session) redirect('/login?returnTo=/matches');
 
   return (
-    <div>
-      <h1>League of Legends Player Searcher</h1>
-      <p>asshole</p>
-      <input type="text" onChange={(e) => setSearchText(e.target.value)} />
-      <button onClick={searchForPlayer}>Search for player</button>
-      {playerData ? (
-        <div>
-          <p>Summoner Name: {playerData.name}</p>
-          <img
-            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
-            alt="Profile Icon"
-          />
-          <p>Summoner Level: {playerData.summonerLevel}</p>
-        </div>
-      ) : (
-        <p>No player data</p>
-      )}
-    </div>
+    <>
+      <h1>MatchHistoryPage</h1>
+      <SearchforPlayer />
+    </>
   );
-};
-
-export default SummonerSearch;
+}
