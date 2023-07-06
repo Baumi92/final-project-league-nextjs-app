@@ -1,9 +1,9 @@
 const authorization = new Headers();
 authorization.append('X-Riot-Token', process.env.NEXT_PUBLIC_API_KEY || '');
 // Function to make the API call
-export const fetchMatchhistorybyId = async (matchId: string) => {
+export const fetchMatchhistorybyPuuid = async (puuid: string) => {
   try {
-    const url = `https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}`;
+    const url = `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids`;
 
     const response = await fetch(url, {
       method: 'GET',

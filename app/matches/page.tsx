@@ -26,13 +26,14 @@ const SummonerSearch = () => {
   return (
     <div>
       <h1>League of Legends Player Searcher</h1>
+      <p>asshole</p>
       <input type="text" onChange={(e) => setSearchText(e.target.value)} />
       <button onClick={searchForPlayer}>Search for player</button>
       {playerData ? (
         <div>
           <p>Summoner Name: {playerData.name}</p>
           <img
-            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/2076.png`}
+            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
             alt="Profile Icon"
           />
           <p>Summoner Level: {playerData.summonerLevel}</p>

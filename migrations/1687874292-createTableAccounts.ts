@@ -3,7 +3,7 @@ import { Sql } from 'postgres';
 export type Account = {
   id: number;
   summoner_name: string;
-  userId: number;
+  userId: string;
   puuid_id: string;
 };
 
