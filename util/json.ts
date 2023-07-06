@@ -1,8 +1,8 @@
 import sjson from 'secure-json-parse';
 
 export function parseJson(
- stringifiedJson: string,
- ): undefined | CookieCommentItem[] {
+  stringifiedJson: string,
+): undefined | CookieCommentItem[] {
   if (!stringifiedJson) return undefined;
 
   try {
@@ -10,4 +10,4 @@ export function parseJson(
   } catch {
     return undefined;
   }
- }
+}

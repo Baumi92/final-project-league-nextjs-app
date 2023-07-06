@@ -8,8 +8,6 @@ type Account = {
   puuid_id: string;
 };
 
-
-
 export const getSummonerBySummonername = cache(async (id: string) => {
   const [summoner_name] = await sql<Account[]>`
     SELECT

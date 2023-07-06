@@ -12,7 +12,7 @@ app.get('/api/matchHistory', async (req, res) => {
         headers: {
           'X-Riot-Token': process.env.RIOT_API_KEY,
         },
-      }
+      },
     );
     res.send(response.data);
   } catch (error) {

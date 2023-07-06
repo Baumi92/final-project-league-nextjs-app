@@ -1,4 +1,3 @@
-
 const authorization = new Headers();
 authorization.append('X-Riot-Token', process.env.NEXT_PUBLIC_API_KEY || '');
 // Function to make the API call
