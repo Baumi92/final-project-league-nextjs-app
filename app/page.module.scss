@@ -1,0 +1,28 @@
+.cardContainer {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  border: 2px solid #c89b3c;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+  margin-right: 20px;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.h1 {
+  text-align: center;
+  color: #c89b3c;
+}
+
+.h3 {
+  color: #c89b3c;
+}
+
+.p {
+  color: #c89b3c;
+}
