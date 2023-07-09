@@ -1,6 +1,4 @@
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { getValidSessionByToken } from '../../../database/sessions';
 import { fetchSummonerByName } from '../getSummoner';
 
 export async function GET(): Promise<NextResponse<any>> {
