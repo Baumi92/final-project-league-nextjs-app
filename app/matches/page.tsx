@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getValidSessionByToken } from '../../database/sessions';
-import SearchforPlayer from './MatchHistory';
+import MatchHistoryById from './MatchHistory';
 
 export default async function () {
   // 1. Check if the sessionToken cookie exit
@@ -19,7 +19,7 @@ export default async function () {
   return (
     <>
       <h1>MatchHistoryPage</h1>
-      <SearchforPlayer />
+      <MatchHistoryById />
     </>
   );
 }

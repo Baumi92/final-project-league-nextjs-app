@@ -1,28 +1,29 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import React from 'react';
 
-const SearchInput = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const router = useRouter();
-  const onSearch = (event: React.FormEvent) => {
-    event.preventDefault();
+interface SummonerDataProps {
+  data: any;
+}
 
-    const encodedSearchQuery = encodeURI(searchQuery);
-    router.push(`/search?q=${encodedSearchQuery}`);
+const SummonerData: React.FC<SummonerDataProps> = ({ data }) => {
+  if (!data || Object.keys(data).length === 0) {
+    return <div>No data available</div>;
+  }
 
-    console.log('current query', searchQuery);
+  const renderData = () => {
+    return Object.entries(data).map(([key, value]) => (
+      <div key={key}>
+        <strong>{key}: </strong>
+        {typeof value === 'object' ? JSON.stringify(value) : value}
+      </div>
+    ));
   };
 
   return (
-    <form className="flex justify-center-2/3" onSubmit={onSearch}>
-      <input
-        value={searchQuery}
-        onChange={(event) => setSearchQuery(event.target.value)}
-        placeholder="Search Summoner?"
-      />
-    </form>
+    <div>
+      <h2>Summoner Data</h2>
+      {renderData()}
+    </div>
   );
 };
 
-export default SearchInput;
+export default SummonerData;

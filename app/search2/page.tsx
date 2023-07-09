@@ -1,15 +1,26 @@
-'use client';
+import React from 'react';
+import SummonerData from '../search2/SearchInput';
 
-import { useSearchParams } from 'next/navigation';
+interface SearchPageProps {
+  data: any;
+}
 
-const SearchPage = () => {
-  const search = useSearchParams();
-  const searchQuery = search ? search.get('q') : null;
-
-  const encodedSearchQuery = encodeURI(searchQuery || '');
-  console.log('SEARCH PARAMS', encodedSearchQuery);
-
-  return <div>Search Page</div>;
+const SearchPage: React.FC<SearchPageProps> = ({ data }) => {
+  return (
+    <div>
+      <h1>Search Page</h1>
+      <SummonerData data={data} />
+    </div>
+  );
 };
+
+export async function getServerSideProps() {
+  // Fetch the data from the API endpoint
+  const res = await fetch('http://localhost:3000/api/summoner');
+  const { data } = await res.json();
+
+  // Pass the data as props to the page component
+  return { props: { data } };
+}
 
 export default SearchPage;
