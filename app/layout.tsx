@@ -37,30 +37,31 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={myFont.className}>
-        <div>
-          <div className={styles.buttons}>
-            {user ? (
-              <>
-                <div className={styles.name}>{user.username}</div>
-                <LogoutButton />
-              </>
-            ) : (
-              <>
-                <a className={styles.buttons} href="/register">
-                  Register
-                </a>
+        <div className={styles.container}>
+          <div className={styles.content}>
+            <div className={styles.buttons}>
+              {user ? (
+                <>
+                  <div className={styles.name}>{user.username}</div>
+                  <LogoutButton />
+                </>
+              ) : (
+                <>
+                  <a className={styles.buttons} href="/register">
+                    Register
+                  </a>
 
-                <a className={styles.buttons} href="/login">
-                  Login
-                </a>
-              </>
-            )}
+                  <a className={styles.buttons} href="/login">
+                    Login
+                  </a>
+                </>
+              )}
+            </div>
+            <Navbar />
+            {children}
           </div>
-          <Navbar />
+          <Footer />
         </div>
-
-        {children}
-        <Footer />
       </body>
     </html>
   );

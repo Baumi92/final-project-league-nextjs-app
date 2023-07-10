@@ -18,6 +18,7 @@ interface MatchData {
   championLevel: number;
   itemIds: number[];
   items: { id: number; name: string; image: string }[];
+  gameNumber: number;
 }
 
 function App() {
@@ -25,7 +26,6 @@ function App() {
   const [playerData, setPlayerData] = useState<PlayerData | null>(null);
   const [matchHistory, setMatchHistory] = useState<MatchData[]>([]);
   const [selectedMatch, setSelectedMatch] = useState<MatchData | null>(null);
-  const [championImageUrl, setChampionImageUrl] = useState('');
 
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -53,7 +53,7 @@ function App() {
       .then(function (response) {
         console.log(response.data);
         const matchIds: string[] = response.data.slice(0, 10); // Limit to first 10 matches
-        const matches: MatchData[] = matchIds.map((matchId) => ({
+        const matches: MatchData[] = matchIds.map((matchId, index) => ({
           participants: [], // Add an empty participants array
           puuid,
           matchId,
@@ -61,6 +61,7 @@ function App() {
           championLevel: 0,
           itemIds: [],
           items: [],
+          gameNumber: index + 1,
         }));
         setMatchHistory(matches);
       })
@@ -103,17 +104,13 @@ function App() {
 
         const championName = participant.championName.replace(/\s/g, '');
         const championLevel = participant.championLevel;
-        const itemIds = participant.items.map(
-          (item: { id: number }) => item.id,
-        );
 
         const updatedMatchHistory = matchHistory.map((match) =>
           match.matchId === matchId
-            ? { ...match, championName, championLevel, itemIds }
+            ? { ...match, championName, championLevel }
             : match,
         );
         setMatchHistory(updatedMatchHistory);
-        fetchItemData(itemIds);
         fetchChampionImage(championName);
       })
       .catch(function (error) {
@@ -123,7 +120,7 @@ function App() {
 
   function fetchChampionImage(championName: string) {
     const championsURL =
-      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion.json';
+      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion/Aatrox.json';
 
     axios
       .get(championsURL)
@@ -133,45 +130,12 @@ function App() {
         if (!championInfo) return;
 
         const championImageUrl = `http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${championInfo.image.full}`;
-        setChampionImageUrl(championImageUrl);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  function fetchItemData(itemIds: number[]) {
-    if (!API_KEY || !selectedMatch) return; // API key not available or no selected match
-
-    const itemURL =
-      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/item.json';
-
-    axios
-      .get(itemURL)
-      .then(function (response) {
-        console.log(response.data);
-        const itemsData = response.data.data;
-        const participant = selectedMatch.participants.find(
-          (p: { championName: string }) =>
-            p.championName === selectedMatch.championName,
-        );
-        if (!participant) return;
-
-        const items = itemIds
-          .filter((itemId) => participant.itemIds.includes(itemId))
-          .map((itemId) => {
-            const item = itemsData[itemId.toString()];
-            return {
-              id: itemId,
-              name: item.name,
-              image: `http://ddragon.leagueoflegends.com/cdn/13.13.1/img/item/${itemId}.png`,
-            };
-          });
-
-        const updatedMatchHistory = matchHistory.map((m) =>
-          m.matchId === selectedMatch.matchId ? { ...m, items } : m,
-        );
-        setMatchHistory(updatedMatchHistory);
+        setPlayerData((prevData) => {
+          if (prevData) {
+            return { ...prevData, championImageUrl };
+          }
+          return null;
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -200,7 +164,7 @@ function App() {
               <h2>Match History</h2>
               <ul className={styles.matchList}>
                 {matchHistory.map((match: MatchData, index: number) => {
-                  const key = `match-${index}-${match.matchId}`;
+                  const key = `match-${index}`;
 
                   return (
                     <li key={key}>
@@ -210,7 +174,7 @@ function App() {
                         alt={match.championName}
                         src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${match.championName}.png`}
                       />
-                      {match.matchId}
+                      Game {match.gameNumber}
                       <button
                         className={styles.button}
                         onClick={() => selectMatch(match)}
@@ -231,7 +195,7 @@ function App() {
       {selectedMatch ? (
         <div>
           <h2>Selected Match</h2>
-          <p>Match ID: {selectedMatch.matchId}</p>
+          <p>Match ID: {selectedMatch.gameNumber}</p>
           <img
             width="100"
             alt={selectedMatch.championName}
@@ -239,42 +203,6 @@ function App() {
           />
           <p>Champion Name: {selectedMatch.championName}</p>
           <p>Champion Level: {selectedMatch.championLevel}</p>
-          <h3>Items:</h3>
-          <div>
-            {selectedMatch.items.length > 0 ? (
-              selectedMatch.items.map((item) => (
-                <div key={item.id}>
-                  <img
-                    width="50"
-                    height="50"
-                    alt={item.name}
-                    src={item.image}
-                  />
-                  <p>{item.name}</p>
-                </div>
-              ))
-            ) : (
-              <p>No items found for this champion in the selected match.</p>
-            )}
-          </div>
-          <h3>All Items:</h3>
-          <div>
-            {selectedMatch.items.length > 0 ? (
-              selectedMatch.items.map((item) => (
-                <div key={item.id}>
-                  <img
-                    width="50"
-                    height="50"
-                    alt={item.name}
-                    src={item.image}
-                  />
-                  <p>{item.name}</p>
-                </div>
-              ))
-            ) : (
-              <p>No items found.</p>
-            )}
-          </div>
         </div>
       ) : null}
     </div>
