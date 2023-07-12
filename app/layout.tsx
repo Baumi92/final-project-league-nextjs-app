@@ -11,7 +11,7 @@ import styles from './layout.module.scss';
 const myFont = localFont({
   src: [
     {
-      path: './../../../Downloads/Spiegel-Regular.otf',
+      path: './../public/a-spiegel.otf',
     },
   ],
 });
