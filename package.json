@@ -26,7 +26,7 @@
     "sass": "^1.63.6",
     "secure-json-parse": "^2.7.0",
     "server-only": "^0.0.1",
-    "sharp": "^0.32.1",
+    "sharp": "^0.32.2",
     "tsm": "^2.3.0",
     "zod": "^3.21.4"
   },
@@ -40,8 +40,6 @@
     "@types/promise-queue": "^2.2.0",
     "@types/react": "18.2.13",
     "@types/react-dom": "18.2.6",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
     "eslint-config-upleveled": "^5.0.0",
     "stylelint": "^15.10.1",
     "stylelint-config-upleveled": "^1.0.2",
