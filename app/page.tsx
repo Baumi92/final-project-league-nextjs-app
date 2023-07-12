@@ -10,17 +10,17 @@ const HomePage: React.FC = () => {
         <Card
           title="Matches Site"
           description="Information will be available soon."
-          link="http://localhost:3000/matches"
+          link="/matches"
         />
         <Card
           title="Ranks Site"
           description="Information will be available soon."
-          link="http://localhost:3000/ranked"
+          link="/ranked"
         />
         <Card
           title="Search Summoner"
           description="Information will be available soon."
-          link="http://localhost:3000/search"
+          link="/search"
         />
       </div>
     </div>
