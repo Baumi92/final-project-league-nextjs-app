@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createSession } from '../../../../database/sessions';
 import { getUserWithPasswordHashByUsername } from '../../../../database/users';
-import { User } from '../../../../migrations/1687874359-createUser';
+import { User } from '../../../../migrations/1687873259-createUser';
 import { secureCookieOptions } from '../../../../util/cookie';
 
 type Error = {
