@@ -19,7 +19,7 @@ export default async function () {
   return (
     <>
       <h1>MatchHistoryPage</h1>
-      <MatchHistoryById />
+      <MatchHistoryById matchData={undefined} />
     </>
   );
 }
