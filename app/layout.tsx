@@ -1,4 +1,4 @@
-import './globals.css';
+import '../app/styles/globals.css';
 import localFont from 'next/font/local';
 import { cookies } from 'next/headers';
 import { ReactNode } from 'react';
@@ -38,6 +38,7 @@ export default async function RootLayout({ children }: Props) {
     <html lang="en">
       <body className={myFont.className}>
         <div className={styles.container}>
+          <Navbar />
           <div className={styles.content}>
             <div className={styles.buttons}>
               {user ? (
@@ -50,15 +51,14 @@ export default async function RootLayout({ children }: Props) {
                   <a className={styles.buttons} href="/register">
                     Register
                   </a>
-
                   <a className={styles.buttons} href="/login">
                     Login
                   </a>
                 </>
               )}
             </div>
-            <Navbar />
-            {children}
+
+            <main className="content">{children}</main>
           </div>
           <Footer />
         </div>

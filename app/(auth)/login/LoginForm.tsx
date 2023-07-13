@@ -1,5 +1,4 @@
 'use client';
-
 import { Route } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -38,28 +37,33 @@ export default function LoginForm(props: Props) {
   }
 
   return (
-    <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
-      <label className={styles.label}>
-        Username:
-        <input
-          className={styles.input}
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label className={styles.label}>
-        Password:
-        <input
-          className={styles.input}
-          value={password}
-          type="password"
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button className={styles.button} onClick={async () => await login()}>
-        log in
-      </button>
-      {error !== '' && <div className={styles.error}>{error}</div>}
-    </form>
+    <div className={styles.card}>
+      <form
+        className={styles.form}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <label className={styles.label}>
+          Username:
+          <input
+            className={styles.input}
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+          />
+        </label>
+        <label className={styles.label}>
+          Password:
+          <input
+            className={styles.input}
+            value={password}
+            type="password"
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+        </label>
+        <button className={styles.button} onClick={async () => await login()}>
+          Log in
+        </button>
+        {error !== '' && <div className={styles.error}>{error}</div>}
+      </form>
+    </div>
   );
 }

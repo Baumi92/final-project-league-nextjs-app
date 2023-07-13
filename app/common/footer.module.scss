@@ -1,16 +1,16 @@
 .footer {
-  background-color: #785a28; /* Replace with your desired hex color */
-  color: white;
-  padding: 40px;
+  background-color: #111111;
+  color: #c89b3c;
+  padding: 50px;
   text-align: center;
-  margin-top: auto; /* Add this property to push the footer to the bottom */
-}
-
-.icon {
-  margin-right: 10px; /* Adjust as needed */
+  align-items: center;
+  border-top: 2px solid #5b5a56;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 /* Add any other custom styles as desired */
 .copyright {
-  background-color: #785a28;
+  background-color: #111111;
 }

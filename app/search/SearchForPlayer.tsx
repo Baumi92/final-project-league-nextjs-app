@@ -1,7 +1,7 @@
 'use client';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import styles from './page.module.scss';
+import styles from '../search/page.module.scss';
 
 interface PlayerData {
   name: string;
@@ -17,8 +17,9 @@ interface MatchData {
   championName: string;
   championLevel: number;
   itemIds: number[];
-  items: { id: number; name: string; image: string }[];
+  items: any[]; // Change the type of items back to any[]
   gameNumber: number;
+  championImageUrl?: string;
 }
 
 function App() {
@@ -37,10 +38,11 @@ function App() {
 
   function selectMatch(match: MatchData) {
     setSelectedMatch(match);
+    fetchChampionImage(match.championName);
   }
 
   function fetchMatchHistory(puuid: string) {
-    if (!API_KEY) return; // API key not available
+    if (!API_KEY) return;
 
     const APICALLSTRING =
       `https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids` +
@@ -52,9 +54,9 @@ function App() {
       .get<string[]>(APICALLSTRING)
       .then(function (response) {
         console.log(response.data);
-        const matchIds: string[] = response.data.slice(0, 10); // Limit to first 10 matches
+        const matchIds: string[] = response.data.slice(0, 10);
         const matches: MatchData[] = matchIds.map((matchId, index) => ({
-          participants: [], // Add an empty participants array
+          participants: [],
           puuid,
           matchId,
           championName: '',
@@ -89,7 +91,7 @@ function App() {
   }
 
   function fetchMatchData(matchId: string) {
-    if (!API_KEY || !selectedMatch) return; // API key not available or no selected match
+    if (!API_KEY || !selectedMatch) return;
 
     const APICALLSTRING = `https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${API_KEY}`;
 
@@ -120,7 +122,7 @@ function App() {
 
   function fetchChampionImage(championName: string) {
     const championsURL =
-      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion/Aatrox.json';
+      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion.json';
 
     axios
       .get(championsURL)
@@ -130,11 +132,13 @@ function App() {
         if (!championInfo) return;
 
         const championImageUrl = `http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${championInfo.image.full}`;
-        setPlayerData((prevData) => {
-          if (prevData) {
-            return { ...prevData, championImageUrl };
-          }
-          return null;
+        setMatchHistory((prevMatchHistory) => {
+          return prevMatchHistory.map((match) => {
+            if (match.championName === championName) {
+              return { ...match, championImageUrl };
+            }
+            return match;
+          });
         });
       })
       .catch(function (error) {
@@ -143,38 +147,46 @@ function App() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.card}>
       <h1 className={styles.h1}>League of Legends Player Searcher</h1>
-      <input type="text" onChange={(e) => setSearchText(e.target.value)} />
+      <input
+        className={styles.input}
+        type="text"
+        onChange={(e) => setSearchText(e.target.value)}
+      />
       <button className={styles.button} onClick={searchForPlayer}>
         Search for player
       </button>
       {playerData ? (
         <>
-          <p>{playerData.name}</p>
+          <p className={styles.h1}>{playerData.name}</p>
           <img
             width="100"
             height="100"
             alt="showing profile"
             src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
           />
-          <p>Summoner Level {playerData.summonerLevel}</p>
-          {matchHistory.length > 0 ? (
-            <div>
-              <h2>Match History</h2>
+          <p className={styles.matches}>
+            Summoner Level {playerData.summonerLevel}
+          </p>
+          {matchHistory && matchHistory.length > 0 ? (
+            <div className={styles.matches}>
+              <h2 className={styles.matchList}>Match History</h2>
               <ul className={styles.matchList}>
                 {matchHistory.map((match: MatchData, index: number) => {
                   const key = `match-${index}`;
 
                   return (
-                    <li key={key}>
-                      <img
-                        width="50"
-                        height="50"
-                        alt={match.championName}
-                        src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${match.championName}.png`}
-                      />
+                    <li className={styles.matchList} key={key}>
                       Game {match.gameNumber}
+                      {match.championImageUrl && (
+                        <img
+                          width="50"
+                          height="50"
+                          alt={match.championName}
+                          src={match.championImageUrl}
+                        />
+                      )}
                       <button
                         className={styles.button}
                         onClick={() => selectMatch(match)}
@@ -193,16 +205,19 @@ function App() {
       ) : null}
 
       {selectedMatch ? (
-        <div>
-          <h2>Selected Match</h2>
-          <p>Match ID: {selectedMatch.gameNumber}</p>
-          <img
-            width="100"
-            alt={selectedMatch.championName}
-            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${selectedMatch.championName}.png`}
-          />
-          <p>Champion Name: {selectedMatch.championName}</p>
-          <p>Champion Level: {selectedMatch.championLevel}</p>
+        <div className={styles.matches}>
+          <h2 className={styles.matches}>Selected Match</h2>
+          <p className={styles.matches}>Match ID: {selectedMatch.gameNumber}</p>
+          {selectedMatch.championImageUrl && (
+            <img
+              width="100"
+              alt={selectedMatch.championName}
+              src={selectedMatch.championImageUrl}
+            />
+          )}
+          <p className={styles.matches}>
+            Champion Name: {selectedMatch.championName}
+          </p>
         </div>
       ) : null}
     </div>

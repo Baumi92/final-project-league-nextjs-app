@@ -1,13 +1,20 @@
-.button {
-  border: 1px solid;
-  cursor: pointer;
-  color: #32281e;
-  background-color: #c89b3c;
-  border-radius: 5px;
+.card {
+  background-color: #32281e;
+  border-radius: 2px;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-  &:hover {
-    background-color: #0a1428;
-    color: white;
+  .button {
+    border: 1px solid #d0a85c;
+    background-color: #785a28;
+    color: #32281e;
+
+    &:hover {
+      background-color: rgb(160 155 140);
+      color: white;
+    }
   }
 }
 
@@ -16,14 +23,25 @@
 }
 
 .label {
-  color: #c89b3c;
-  font-size: xx-large;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: #32281e;
+  color: #785a28;
 }
 
 .form {
   text-align: center;
+  background-color: #32281e;
 }
 
 .input {
-  background-color: antiquewhite;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #785a28;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #ffff;
 }

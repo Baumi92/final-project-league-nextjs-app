@@ -1,18 +1,54 @@
 .button {
-  background-color: #c89b3c;
-  color: #cdfafa;
+  background-color: #d0a85c;
+  color: #111111;
 }
 
 .h1 {
   color: #c89b3c;
   font-size: xx-large;
+  background-color: #111111;
+  text-align: center;
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  /* Add this line to center the content vertically */
   text-align: center;
   justify-content: center;
+  border-radius: 5px;
+  border-color: #a09b8c;
 }
 .matchList {
   list-style: none;
   padding: 0;
+  text-align: center;
+  background-color: #111111;
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+.input {
+  background-color: #ffffff;
+  text-align: center;
+  margin: 20px auto; /* Add auto margin to center the input horizontally */
+}
+.card {
+  border: 2px solid #5b5a56;
+  border-radius: 5px;
+  padding: 20px;
+  width: 600px;
+  margin: auto;
+  /* Set margin to 0 and auto to horizontally center the card */
+  background-color: #111111;
+  text-align: center;
+}
+
+.matches {
+  background-color: #1111111e;
+  color: #c89b3c;
+  gap: 30px;
+  justify-content: center;
+  padding-top: 20px;
 }

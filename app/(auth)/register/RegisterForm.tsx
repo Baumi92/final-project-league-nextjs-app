@@ -1,5 +1,4 @@
 'use client';
-
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
@@ -31,28 +30,36 @@ export default function RegisterForm() {
   }
 
   return (
-    <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
-      <label className={styles.label}>
-        Username:
-        <input
-          className={styles.input}
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label className={styles.label}>
-        Password:
-        <input
-          className={styles.input}
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button className={styles.button} onClick={async () => await register()}>
-        Sign up
-      </button>
-      {error !== '' && <div className={styles.error}>{error}</div>}
-    </form>
+    <div className={styles.card}>
+      <form
+        className={styles.form}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <label className={styles.label}>
+          Username:
+          <input
+            className={styles.input}
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+          />
+        </label>
+        <label className={styles.label}>
+          Password:
+          <input
+            className={styles.input}
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+          />
+        </label>
+        <button
+          className={styles.button}
+          onClick={async () => await register()}
+        >
+          Sign up
+        </button>
+        {error !== '' && <div className={styles.error}>{error}</div>}
+      </form>
+    </div>
   );
 }

@@ -15,19 +15,28 @@ export const Navbar = async () => {
     <div>
       <ul className={styles.ul}>
         <li>
-          <a href="/">Overview</a>
+          <a href="/">
+            <img
+              src="/LoL_icon.svg.png"
+              alt="League of Legends"
+              width={20}
+              height={20}
+            />
+            Overview
+          </a>
         </li>
         <li>
-          <a href="/matches"> Matches</a>
+          <a href="/matches">Match History</a>
         </li>
         <li>
-          <a href="/ranked"> Ranks</a>
+          <a href="/ranked">Rank History</a>
         </li>
         <li>
-          <a href="/search"> Search Summoner</a>
+          <a href="/search"> Search SummonerName</a>
         </li>
       </ul>
     </div>
   );
 };
+
 export default Navbar;

@@ -9,13 +9,13 @@ export function LogoutButton() {
   return (
     <form>
       <button
-        className={styles.button}
+        className={styles.card}
         formAction={async () => {
           await logout();
           router.refresh();
         }}
       >
-        logout
+        Logout
       </button>
     </form>
   );

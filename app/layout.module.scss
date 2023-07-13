@@ -1,5 +1,14 @@
-.searchinput {
-  justify-content: center;
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  margin-right: 20px;
+  color: #c89b3c;
   text-align: center;
 }
 
@@ -7,22 +16,7 @@
   color: #c89b3c;
 }
 
-.buttons {
-  float: right;
-  background-color: #c89b3c;
-  color: #cdfafa;
-
-  :hover {
-    background-color: #cdfafa;
-    color: #785a28;
-  }
-}
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .content {
   flex: 1;
+  padding: 20px;
 }

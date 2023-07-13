@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getValidSessionByToken } from '../../database/sessions';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Rank Page',
@@ -20,5 +21,5 @@ export default async function RankedPage() {
   // 3. Either redirect or render the login form
   if (!session) redirect('/login?returnTo=/ranked');
 
-  return <p>Hello World</p>;
+  return <p className={styles.p}>Will be available soon !</p>;
 }
