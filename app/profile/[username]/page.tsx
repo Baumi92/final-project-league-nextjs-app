@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import { getUserByUsername } from '../../../database/users';
 
 type Props = {
@@ -7,8 +7,9 @@ type Props = {
 
 export default async function ProfileUsernamePage({ params }: Props) {
   const user = await getUserByUsername(params.username);
-
+  const router = useRouter();
   if (!user) {
+    router.push('/search');
     notFound();
   }
 

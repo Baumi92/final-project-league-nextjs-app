@@ -122,7 +122,7 @@ function App() {
 
   function fetchChampionImage(championName: string) {
     const championsURL =
-      'http://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion.json';
+      'https://ddragon.leagueoflegends.com/cdn/13.13.1/data/en_US/champion.json';
 
     axios
       .get(championsURL)
@@ -131,7 +131,7 @@ function App() {
         const championInfo = championData[championName];
         if (!championInfo) return;
 
-        const championImageUrl = `http://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${championInfo.image.full}`;
+        const championImageUrl = `https://ddragon.leagueoflegends.com/cdn/13.13.1/img/champion/${championInfo.image.full}`;
         setMatchHistory((prevMatchHistory) => {
           return prevMatchHistory.map((match) => {
             if (match.championName === championName) {
