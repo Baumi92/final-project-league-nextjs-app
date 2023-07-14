@@ -6,7 +6,7 @@
 
 .card {
   margin: 10px;
-  border: 2px solid #a09b8c;
+  border: 2px solid #d0a85c;
   background-color: #111111;
   color: #d0a85c;
   padding: 50px;
@@ -14,22 +14,23 @@
 
 .h1 {
   text-align: center;
-  color: #c89b3c;
+  color: #a09b8c;
+  font-size: 50px;
 }
 
 .h3 {
-  color: #c89b3c;
+  color: #a09b8c;
   background-color: #111111;
 }
 
 .p {
-  color: #c89b3c;
+  color: #a09b8c;
   background-color: #111111;
 }
 .list {
   display: block;
   text-align: center;
-  color: #c89b3c;
+  color: #a09b8c;
 }
 
 .textContainer {
@@ -38,9 +39,9 @@
   flex-direction: column;
   justify-content: center;
   margin: 50px auto; /* Set auto for horizontal margin to center the container */
-  border: 2px solid #a09b8c;
+  border: 2px solid #d0a85c;
   background-color: #111111;
-  color: #d0a85c;
+  color: #a09b8c;
   padding: 30px;
   width: 500px; /* Adjust the width as needed */
 }

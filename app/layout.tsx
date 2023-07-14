@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { getUserBySessionToken } from '../database/users';
 import Footer from './common/footer';
 import { LogoutButton } from './components/LogoutButton';
+import Navibar from './components/Navibar';
 import Navbar from './components/Navigation';
 import styles from './layout.module.scss';
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <body className={myFont.className}>
+        <Navibar />
         <div className={styles.container}>
           <Navbar />
           <div className={styles.content}>
