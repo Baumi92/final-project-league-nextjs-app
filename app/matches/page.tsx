@@ -15,7 +15,7 @@ export default async function () {
     (await getValidSessionByToken(sessionTokenCookie.value));
 
   // 3. Either redirect or render the login form
-  if (!session) redirect('/login?returnTo=/search');
+  if (!session) redirect('/login');
 
   return (
     <>

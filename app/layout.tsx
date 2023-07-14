@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import { getUserBySessionToken } from '../database/users';
 import Footer from './common/footer';
 import { LogoutButton } from './components/LogoutButton';
-import Navbar from './components/Navigation';
+import Navbar from './components/navigation';
 import styles from './layout.module.scss';
 
 const myFont = localFont({

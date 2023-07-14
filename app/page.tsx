@@ -17,6 +17,10 @@ const HomePage: React.FC = () => {
           Get ready to dive deeper into the world of League of Legends with My
           League of Legends App. Start exploring now!
         </p>
+        <p className={styles.introText}>
+          {' '}
+          Please Sign Up or Log In, before you can start enjoying the App
+        </p>
       </div>
       <div className={styles.cardContainer}>
         <Card

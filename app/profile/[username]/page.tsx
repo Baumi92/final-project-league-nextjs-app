@@ -1,5 +1,6 @@
-import { notFound, useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { getUserByUsername } from '../../../database/users';
+import styles from '../page.module.scss';
 
 type Props = {
   params: { username: string };
@@ -7,16 +8,17 @@ type Props = {
 
 export default async function ProfileUsernamePage({ params }: Props) {
   const user = await getUserByUsername(params.username);
-  const router = useRouter();
+
   if (!user) {
-    router.push('/search');
     notFound();
   }
 
   return (
     <>
-      <div>id: {user.id}</div>
-      <div>username: {user.username}</div>
+      <form className={styles.redirect}>
+        <div>Id: {user.id}</div>
+        <div>Username: {user.username}</div>
+      </form>
     </>
   );
 }

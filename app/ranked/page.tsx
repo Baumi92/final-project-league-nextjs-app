@@ -19,7 +19,7 @@ export default async function RankedPage() {
     (await getValidSessionByToken(sessionTokenCookie.value));
 
   // 3. Either redirect or render the login form
-  if (!session) redirect('/login?returnTo=/ranked');
+  if (!session) redirect('/login');
 
   return <p className={styles.p}>Will be available soon !</p>;
 }
