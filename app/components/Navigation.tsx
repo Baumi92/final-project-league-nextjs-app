@@ -1,7 +1,6 @@
 import { cookies } from 'next/headers';
 import React from 'react';
 import { getUserBySessionToken } from '../../database/users';
-import styles from './navigation.module.scss';
 
 export const Navbar = async () => {
   const cookieStore = cookies();
