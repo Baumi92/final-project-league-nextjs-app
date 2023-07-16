@@ -21,5 +21,5 @@ export default async function RankedPage() {
   // 3. Either redirect or render the login form
   if (!session) redirect('/login');
 
-  return <p className={styles.p}>Will be available soon !</p>;
+  return <h1 className={styles.p}>Will be available soon !</h1>;
 }

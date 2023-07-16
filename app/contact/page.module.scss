@@ -1,0 +1,38 @@
+.card {
+  background: linear-gradient(90deg, #111111, #0f2840);
+  border-radius: 5px;
+  border: 2px solid #d0a85c;
+  padding: 20px;
+  width: 600px;
+  margin: 0 auto;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.h1 {
+  color: #a09b8c;
+  font-size: xx-large;
+  background: linear-gradient(90deg, #111111, #0f2840);
+}
+
+.form {
+  text-align: center;
+  background: linear-gradient(90deg, #111111, #0f2840);
+}
+
+.ul {
+  color: #a09b8c;
+  background: linear-gradient(90deg, #111111, #0f2840);
+  list-style: none; /* Hide list bullets */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+.li {
+  background: linear-gradient(90deg, #111111, #0f2840);
+}
+.p {
+  background: linear-gradient(90deg, #111111, #0f2840);
+}

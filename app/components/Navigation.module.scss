@@ -2,23 +2,24 @@
   list-style-type: none;
   margin-top: 100px;
   padding: 0;
-  background-color: #111111;
   position: fixed;
   top: 0;
   left: 0rem; /* Align to the right side of the screen */
   bottom: auto;
   border-radius: 5px;
-  border: 2px solid #5b5a56;
+  border: 2px solid #d0a85c;
   display: flex;
   flex-direction: column;
   min-height: 60vh;
+  overflow-y: auto;
+  background: linear-gradient(90deg, #111111, #0f2840);
 
   li a {
     display: flex;
     color: #a09b8c;
-    background-color: #111111;
     padding: 8px 16px;
     padding-top: 20px;
+    background: linear-gradient(90deg, #111111, #0f2840);
   }
 
   li a:hover {

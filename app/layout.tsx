@@ -4,7 +4,6 @@ import { cookies } from 'next/headers';
 import { ReactNode } from 'react';
 import { getUserBySessionToken } from '../database/users';
 import Footer from './common/footer';
-import { LogoutButton } from './components/LogoutButton';
 import Navibar from './components/Navibar';
 import Navbar from './components/Navigation';
 import styles from './layout.module.scss';
@@ -42,28 +41,10 @@ export default async function RootLayout({ children }: Props) {
         <div className={styles.container}>
           <Navbar />
           <div className={styles.content}>
-            <div className={styles.buttons}>
-              {user ? (
-                <>
-                  <div className={styles.name}>{user.username}</div>
-                  <LogoutButton />
-                </>
-              ) : (
-                <>
-                  <a className={styles.buttons} href="/register">
-                    Register
-                  </a>
-                  <a className={styles.buttons} href="/login">
-                    Login
-                  </a>
-                </>
-              )}
-            </div>
-
             <main className="content">{children}</main>
           </div>
-          <Footer />
         </div>
+        <Footer />
       </body>
     </html>
   );

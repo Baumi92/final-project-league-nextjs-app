@@ -15,17 +15,6 @@ export const Navbar = async () => {
     <div>
       <ul className={styles.ul}>
         <li>
-          <a href="/">
-            <img
-              src="/LoL_icon.svg.png"
-              alt="League of Legends"
-              width={20}
-              height={20}
-            />
-            Overview
-          </a>
-        </li>
-        <li>
           <a href="/matches">Match History</a>
         </li>
         <li>

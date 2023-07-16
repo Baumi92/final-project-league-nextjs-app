@@ -1,19 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-.buttons {
-  display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  margin-right: 20px;
-  color: #a09b8c;
-  text-align: center;
-}
-
-.name {
-  color: #a09b8c;
+  min-height: 60vh;
 }
 
 .content {

@@ -16,7 +16,6 @@ export default async function ProfileUsernamePage({ params }: Props) {
   return (
     <>
       <form className={styles.redirect}>
-        <div>Id: {user.id}</div>
         <div>Username: {user.username}</div>
       </form>
     </>

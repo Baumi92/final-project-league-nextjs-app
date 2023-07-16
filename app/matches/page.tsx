@@ -19,7 +19,7 @@ export default async function () {
 
   return (
     <>
-      <h1 className={styles.p}>Please go to Search SummonerName</h1>
+      <h1 className={styles.h1}>Please go to Search SummonerName</h1>
       <MatchHistoryById matchData={undefined} />
     </>
   );

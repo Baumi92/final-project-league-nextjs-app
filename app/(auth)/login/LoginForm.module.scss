@@ -1,16 +1,19 @@
 .card {
-  background-color: #32281e;
-  border-radius: 2px;
+  background-color: #111111;
+  border-radius: 5px;
+  border: 2px solid #d0a85c;
   padding: 20px;
   width: 300px;
   margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .button {
     border: 1px solid #d0a85c;
-    background-color: #785a28;
-    color: #32281e;
-
+    background-color: #5b5a56;
     &:hover {
       background-color: rgb(160 155 140);
       color: white;
@@ -26,13 +29,13 @@
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-  background-color: #32281e;
-  color: #785a28;
+  background-color: #111111;
+  color: #a09b8c;
 }
 
 .form {
   text-align: center;
-  background-color: #32281e;
+  background-color: #111111;
 }
 
 .input {

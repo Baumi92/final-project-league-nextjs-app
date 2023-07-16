@@ -147,79 +147,83 @@ function App() {
   }
 
   return (
-    <div className={styles.card}>
-      <h1 className={styles.h1}>League of Legends Player Searcher</h1>
-      <input
-        className={styles.input}
-        type="text"
-        onChange={(e) => setSearchText(e.target.value)}
-      />
-      <button className={styles.button} onClick={searchForPlayer}>
-        Search for player
-      </button>
-      {playerData ? (
-        <>
-          <p className={styles.h1}>{playerData.name}</p>
-          <img
-            width="100"
-            height="100"
-            alt="showing profile"
-            src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
-          />
-          <p className={styles.matches}>
-            Summoner Level {playerData.summonerLevel}
-          </p>
-          {matchHistory && matchHistory.length > 0 ? (
-            <div className={styles.matches}>
-              <h2 className={styles.matchList}>Match History</h2>
-              <ul className={styles.matchList}>
-                {matchHistory.map((match: MatchData, index: number) => {
-                  const key = `match-${index}`;
-
-                  return (
-                    <li className={styles.matchList} key={key}>
-                      Game {match.gameNumber}
-                      {match.championImageUrl && (
-                        <img
-                          width="50"
-                          height="50"
-                          alt={match.championName}
-                          src={match.championImageUrl}
-                        />
-                      )}
-                      <button
-                        className={styles.button}
-                        onClick={() => selectMatch(match)}
-                      >
-                        Choose Match
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : (
-            <p>No match history found</p>
-          )}
-        </>
-      ) : null}
-
-      {selectedMatch ? (
-        <div className={styles.matches}>
-          <h2 className={styles.matches}>Selected Match</h2>
-          <p className={styles.matches}>Match ID: {selectedMatch.gameNumber}</p>
-          {selectedMatch.championImageUrl && (
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.h1}>League of Legends Player Searcher</h1>
+        <input
+          className={styles.input}
+          type="text"
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button className={styles.button} onClick={searchForPlayer}>
+          Search for player
+        </button>
+        {playerData ? (
+          <>
+            <p className={styles.h1}>{playerData.name}</p>
             <img
               width="100"
-              alt={selectedMatch.championName}
-              src={selectedMatch.championImageUrl}
+              height="100"
+              alt="showing profile"
+              src={`http://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/${playerData.profileIconId}.png`}
             />
-          )}
-          <p className={styles.matches}>
-            Champion Name: {selectedMatch.championName}
-          </p>
-        </div>
-      ) : null}
+            <p className={styles.matches}>
+              Summoner Level {playerData.summonerLevel}
+            </p>
+            {matchHistory && matchHistory.length > 0 ? (
+              <div className={styles.matches}>
+                <h2 className={styles.matchList}>Match History</h2>
+                <ul className={styles.matchList}>
+                  {matchHistory.map((match: MatchData, index: number) => {
+                    const key = `match-${index}`;
+
+                    return (
+                      <li className={styles.matchList} key={key}>
+                        Game {match.gameNumber}
+                        {match.championImageUrl && (
+                          <img
+                            width="50"
+                            height="50"
+                            alt={match.championName}
+                            src={match.championImageUrl}
+                          />
+                        )}
+                        <button
+                          className={styles.button}
+                          onClick={() => selectMatch(match)}
+                        >
+                          Choose Match
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : (
+              <p>No match history found</p>
+            )}
+          </>
+        ) : null}
+
+        {selectedMatch ? (
+          <div className={styles.matches}>
+            <h2 className={styles.matches}>Selected Match</h2>
+            <p className={styles.matches}>
+              Match ID: {selectedMatch.gameNumber}
+            </p>
+            {selectedMatch.championImageUrl && (
+              <img
+                width="100"
+                alt={selectedMatch.championName}
+                src={selectedMatch.championImageUrl}
+              />
+            )}
+            <p className={`${styles.champion} ${styles['champion-text']}`}>
+              Champion Name: {selectedMatch.championName}
+            </p>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
