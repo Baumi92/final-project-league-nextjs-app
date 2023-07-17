@@ -75,9 +75,9 @@ First, run the development server:
 ### Contact Information
 
 Github:
-[https://github.com/Baumi92](url)
+- [https://github.com/Baumi92](url)
 LinkedIn:
-[https://www.linkedin.com/in/baumgartnermanuel/](url)
+- [https://www.linkedin.com/in/baumgartnermanuel/](url)
 E-mail:
-[manu.baumi@icloud.com](url)
+- [manu.baumi@icloud.com](url)
 
