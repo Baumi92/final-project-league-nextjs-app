@@ -1,4 +1,4 @@
-## League of Legends Stats APP
+# League of Legends Stats APP
 ![screencapture-final-project-league-nextjs-app-1-vercel-app-2023-07-17-11_22_29](https://github.com/Baumi92/final-project-league-nextjs-app/assets/128682336/b410e8ae-463f-4f6f-ba07-8832d7386a3f)
 
 ## Description
@@ -40,16 +40,16 @@ API Logic Schema:
 ![screencapture-final-project-league-nextjs-app-1-vercel-app-contact-2023-07-17-11_24_31](https://github.com/Baumi92/final-project-league-nextjs-app/assets/128682336/72faeb65-4b0a-4c5f-a8a7-5d07bcdf2b5f)
 
 ## Setup Instructions
-Clone the repository: git clone ```https://github.com/Baumi92/final-project-league-nextjs-app.git
-Navigate to the project directory: cd final-project-league-nextjs-app
-Install the dependencies: pnpm install
-Install dependencies manually (have a look at each page and file )
-Create a Postgres database for the project
-Register yourself to get access to the pages
-Set up the environment variables by creating a .env file based on the .env.example file and updating the necessary values
-Run the database migrations: pnpm migrate up based on the Postgres environment
-Start the development server: pnpm dev
-Open your browser and access the application at http://localhost:3000
+-Clone the repository: ```git clone https://github.com/Baumi92/final-project-league-nextjs-app.git```
+-Navigate to the project directory: ```cd final-project-league-nextjs-app```
+-Install the dependencies: ```pnpm install```
+-Install dependencies manually (have a look at each page and file )
+-Create a Postgres database for the project
+-Register yourself to get access to the pages
+-Set up the environment variables by creating a ```.env``` file based on the ```.env.example``` file and updating the necessary values
+-Run the database migrations: ```pnpm migrate up``` based on the Postgres environment
+-Start the development server: ```pnpm dev```
+-Open your browser and access the application at ```http://localhost:3000```
 
 ## Deployment Instructions
 
@@ -63,7 +63,7 @@ Open your browser and access the application at http://localhost:3000
 
 First, run the development server:
 
-## Contact Information
+### Contact Information
 
 Github:
 [https://github.com/Baumi92](url)
