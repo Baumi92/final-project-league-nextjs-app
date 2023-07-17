@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## League of Legends Stats APP
+![screencapture-final-project-league-nextjs-app-1-vercel-app-2023-07-17-11_22_29](https://github.com/Baumi92/final-project-league-nextjs-app/assets/128682336/b410e8ae-463f-4f6f-ba07-8832d7386a3f)
+
 
 ## Getting Started
 
